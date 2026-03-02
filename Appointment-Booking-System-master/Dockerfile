@@ -62,4 +62,8 @@ RUN mkdir -p storage/framework/cache \
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN sed -i 's/80/${PORT}/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 
+# Add Start Script for Render (Migrations + Apache)
+COPY start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
+CMD ["/usr/local/bin/start.sh"]
