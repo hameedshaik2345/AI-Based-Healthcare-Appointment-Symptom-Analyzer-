@@ -1,8 +1,16 @@
 #!/bin/bash
 
+# Create a proper .env file using example as base
+cp .env.example .env
+echo "" >> .env
+echo "APP_KEY=${APP_KEY}" >> .env
+echo "APP_ENV=production" >> .env
+echo "APP_DEBUG=true" >> .env
+echo "DB_CONNECTION=sqlite" >> .env
+echo "LOG_CHANNEL=stderr" >> .env
+
 # Create SQLite Database if it doesn't exist
 touch database/database.sqlite
-touch /var/www/html/.env
 
 # Discover packages since composer install was run without scripts
 php artisan package:discover --ansi
@@ -11,9 +19,8 @@ php artisan package:discover --ansi
 php artisan migrate --seed --force
 
 # Fix permissions for web server (since migrations run as root)
-chown -R www-data:www-data /var/www/html/storage
-chown -R www-data:www-data /var/www/html/bootstrap/cache
-chown -R www-data:www-data /var/www/html/database
+chown -R www-data:www-data /var/www/html
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
 # Clear cache and optimize
 php artisan optimize:clear
