@@ -187,13 +187,13 @@ php artisan serve
 Our project is successfully deployed and live!
 
  **Live Website:**  
- [https://appointment-booking-system.up.railway.app/](https://appointment-booking-system.up.railway.app/)
+ https://appointment-booking-system-hr7y.onrender.com/
 
 
 
 ### 🚀 How We Deployed
 
-- *Hosting Platform:* [Railway.app](https://railway.app/)  
+- *Hosting Platform:* [Render.app] 
   A modern cloud platform ideal for Laravel apps with free MySQL database hosting.
 
 - *Deployment Method:* Docker  
